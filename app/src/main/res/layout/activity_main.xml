@@ -7,20 +7,20 @@
     tools:context=".MainActivity">
 
     <TextView
-    android:id="@+id/textView"
-    android:layout_width="fill_parent"
-    android:layout_height="46dp"
-    android:layout_marginBottom="8dp"
-    android:layout_marginTop="8dp"
-    android:gravity="center"
-    android:text="Distance : "
-    android:textColor="#FF0000"
-    android:textStyle="bold"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.134"
-    tools:layout_editor_absoluteX="0dp"
-        tools:ignore="MissingConstraints" />
+        android:id="@+id/textView"
+        android:layout_width="fill_parent"
+        android:layout_height="46dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="Distance : "
+        android:textColor="#FF0000"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.134"
+        tools:ignore="DuplicateIds,MissingConstraints"
+        tools:layout_editor_absoluteX="0dp" />
 
     <EditText
         android:id="@+id/distance"
@@ -33,31 +33,41 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.276"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="42dp"
+        android:gravity="center"
+        android:text="Mot-clé : "
+        android:textColor="#FF0000"
+        android:textStyle="bold"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="206dp" />
+
+    <EditText
+        android:id="@+id/category"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="Taper ici"
+        android:inputType="text"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="272dp"
         tools:ignore="MissingConstraints" />
+
+
 
     <RadioGroup
         android:id="@+id/group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:checkedButton="@+id/radio2"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
 
     </RadioGroup>
 
-    <CheckBox
-        android:id="@+id/mega"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Classer par proximité"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="RtlCompat" />
 
     <Button
         android:id="@+id/calcul"
@@ -72,6 +82,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.612" />
+        app:layout_constraintVertical_bias="0.872" />
 
 </android.support.constraint.ConstraintLayout>

@@ -65,17 +65,16 @@ public class Main2Activity extends AppCompatActivity {
     public void lecture(){
             Database data = new Database();
         ArrayList<Restaurant>  services = null;
-        Log.i("Nombre de service: ", "hi");
         try {
             Resources r = getResources();
-            int id = r.getIdentifier("db","raw",getPackageName());
+            int id = r.getIdentifier("test","raw",getPackageName());
             services = data.createDB(getResources().openRawResource(id));
         } catch (IOException e) {
             e.printStackTrace();
         }
         earth.makeBoxes();
 
-
+        Log.i("Nombre de service: ", String.valueOf(+services.size()));
         //Iterator<Restaurant> iterator = services.iterator();
         int i = 0;
         while (i < services.size()) {

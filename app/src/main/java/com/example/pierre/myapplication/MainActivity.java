@@ -21,24 +21,27 @@ import android.content.Intent;
 
 public class MainActivity extends AppCompatActivity {
     public final static String EXTRA_MESSAGE = "distance";//"com.example.pierre.myapplication.MESSAGE";
+    public final static String EXTRA_MESS = "categorie";
     EditText distance = null;
-    CheckBox mega = null;
+    EditText categorie = null;
     Button envoyer = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         envoyer = (Button) findViewById(R.id.calcul);
-        mega = (CheckBox) findViewById(R.id.mega);
+        categorie = (EditText) findViewById(R.id.category);
         distance = (EditText) findViewById(R.id.distance);
         envoyer.setOnClickListener(envoyerListener);
         distance.addTextChangedListener(textWatcher);
+        categorie.addTextChangedListener(textWatcher);
     }
 
     private OnClickListener envoyerListener = new OnClickListener() {
         @Override
         public void onClick(View v) {
             String d = distance.getText().toString();
+            Editable cat = categorie.getText();
             Intent intent = new Intent(MainActivity.this, Main2Activity.class);
             Bundle b = new Bundle();
             b.putString(EXTRA_MESSAGE,d);

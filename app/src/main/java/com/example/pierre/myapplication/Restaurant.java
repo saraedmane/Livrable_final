@@ -32,6 +32,8 @@ public class Restaurant {
     String note;
     @JsonIgnore
     public Specialite specialite;
+    @JsonProperty
+    public String[] categories;
 
     public Restaurant(){}
 
@@ -151,6 +153,15 @@ public class Restaurant {
         this.note = String.valueOf(note);
     }
 
+    public String[] getCategories() {
+        return categories;
+    }
 
-
+    public String category(String[] liste) {
+        String a = null;
+        for (String word:liste){
+            a+=word+", ";
+        }
+        return a;
+    }
 }
