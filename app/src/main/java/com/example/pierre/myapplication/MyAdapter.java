@@ -58,7 +58,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         while (i < res.size()) {
             Restaurant r = res.get(i);
             Log.i("Mon res: ", r.getName());
-            Pair<String, String> cRes = Pair.create(r.getName(),r.getStars());
+            Pair<String, String> cRes = Pair.create(r.getName(),r.getStars() + "/5" + System.getProperty("line.separator")+ r.getAddress());
             this.restos.add(cRes);
             i++;
         }

@@ -41,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             String d = distance.getText().toString();
+            if(d == ""){
+                Toast.makeText(MainActivity.this, "Veuillez renseigner la distance", Toast.LENGTH_SHORT).show(); }
             String category=categorie.getText().toString();
             Intent intent = new Intent(MainActivity.this, Main2Activity.class);
             Bundle b = new Bundle();

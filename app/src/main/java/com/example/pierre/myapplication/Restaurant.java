@@ -43,7 +43,7 @@ public class Restaurant {
     }
 
     public String toString() {
-        return "Name:"+" "+name+" / "+"Address:"+" "+address+" / "+"Review Count:"+" "+review_count+" / "+"Localisation:"+"["+latitude+","+longitude+"]";
+        return "Name:"+" "+name+" / "+"Address:"+" "+address+" / "+"Stars:"+" "+stars+" / "+"Category:"+category(categories);
     }
 
     public String getBusiness_id() {
@@ -158,7 +158,7 @@ public class Restaurant {
     }
 
     public String category(String[] liste) {
-        String a = null;
+        String a = "restaurant";
         for (String word:liste){
             a+=word+", ";
         }

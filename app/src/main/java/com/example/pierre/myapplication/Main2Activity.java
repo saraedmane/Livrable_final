@@ -43,9 +43,9 @@ public class Main2Activity extends AppCompatActivity {
         String message = b.getString("distance");
         String mess=b.getString("category");
 
-        Log.i("Distance: ", message);
 
         d = Integer.parseInt(message);
+
 
         lecture(mess);
         ArrayList<Restaurant> res = earth.listof(yazid, d);
@@ -79,16 +79,15 @@ public class Main2Activity extends AppCompatActivity {
         earth.makeBoxes();
 
         Log.i("Nombre de service: ", String.valueOf(+services.size()));
-        //Iterator<Restaurant> iterator = services.iterator();
         int i = 0;
         while (i < services.size()) {
             Restaurant r = services.get(i);
-            Log.i("Mon resto: ", r.getName());
-            if (keyword != null)
-                if (r.category(r.categories).contains(keyword))
-                    earth.addRestaurant(r);
-            else
-                earth.addRestaurant(r);
+            if (keyword != null) {
+                Log.i("macategorie: ", String.valueOf(r.category(r.categories)));
+                if (r.category(r.categories).contains(keyword)){
+                    earth.addRestaurant(r);}}
+            else {
+                earth.addRestaurant(r);}
             i++;
         }
     }
