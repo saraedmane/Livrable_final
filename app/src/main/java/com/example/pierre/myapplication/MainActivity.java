@@ -21,7 +21,7 @@ import android.content.Intent;
 
 public class MainActivity extends AppCompatActivity {
     public final static String EXTRA_MESSAGE = "distance";//"com.example.pierre.myapplication.MESSAGE";
-    public final static String EXTRA_MESS = "categorie";
+    public final static String EXTRA_MESS = "category";
     EditText distance = null;
     EditText categorie = null;
     Button envoyer = null;
@@ -41,11 +41,14 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             String d = distance.getText().toString();
-            Editable cat = categorie.getText();
+            String category=categorie.getText().toString();
             Intent intent = new Intent(MainActivity.this, Main2Activity.class);
             Bundle b = new Bundle();
+            Bundle c = new Bundle();
+            c.putString(EXTRA_MESS,category);
             b.putString(EXTRA_MESSAGE,d);
             intent.putExtras(b);
+            intent.putExtras(c);
             startActivity(intent);
         }
 

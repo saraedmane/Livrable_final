@@ -41,13 +41,17 @@ public class Main2Activity extends AppCompatActivity {
 
         Bundle b = getIntent().getExtras();
         String message = b.getString("distance");
+        String mess=b.getString("category");
 
         Log.i("Distance: ", message);
 
         d = Integer.parseInt(message);
 
-        lecture();
+        lecture(mess);
         ArrayList<Restaurant> res = earth.listof(yazid, d);
+        if (mess!=null) {
+
+        }
 
         MyAdapter myAdapter = new MyAdapter(d);
 
@@ -62,12 +66,12 @@ public class Main2Activity extends AppCompatActivity {
 
 
 
-    public void lecture(){
-            Database data = new Database();
-        ArrayList<Restaurant>  services = null;
+    public void lecture(String keyword) {
+        Database data = new Database();
+        ArrayList<Restaurant> services = null;
         try {
             Resources r = getResources();
-            int id = r.getIdentifier("test","raw",getPackageName());
+            int id = r.getIdentifier("test", "raw", getPackageName());
             services = data.createDB(getResources().openRawResource(id));
         } catch (IOException e) {
             e.printStackTrace();
@@ -80,35 +84,12 @@ public class Main2Activity extends AppCompatActivity {
         while (i < services.size()) {
             Restaurant r = services.get(i);
             Log.i("Mon resto: ", r.getName());
-            earth.addRestaurant(r);
+            if (keyword != null)
+                if (r.category(r.categories).contains(keyword))
+                    earth.addRestaurant(r);
+            else
+                earth.addRestaurant(r);
             i++;
         }
-
-        Log.i("On ajoute un restaurant", "hh");
-        //Restaurant currentRestaurant = iterator.next();
-
-        }
-
-
-
-    /*private String readJSON(String s) {
-
-        String json = null;
-        try {
-            InputStream is = getAssets().open(s);
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            json = new String(buffer, "UTF-8");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
-        Log.i("Contenu", json);
-
-        return json;
-
-    }*/
-
+    }
 }
