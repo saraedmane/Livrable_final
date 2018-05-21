@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -20,7 +21,7 @@ import android.content.Intent;
 
 
 public class MainActivity extends AppCompatActivity {
-    public final static String EXTRA_MESSAGE = "distance";//"com.example.pierre.myapplication.MESSAGE";
+    public final static String EXTRA_MESSAGE = "distance";
     public final static String EXTRA_MESS = "category";
     EditText distance = null;
     EditText categorie = null;
@@ -41,19 +42,20 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             String d = distance.getText().toString();
-            if(d == ""){
-                Toast.makeText(MainActivity.this, "Veuillez renseigner la distance", Toast.LENGTH_SHORT).show(); }
-            String category=categorie.getText().toString();
-            Intent intent = new Intent(MainActivity.this, Main2Activity.class);
-            Bundle b = new Bundle();
-            Bundle c = new Bundle();
-            c.putString(EXTRA_MESS,category);
-            b.putString(EXTRA_MESSAGE,d);
-            intent.putExtras(b);
-            intent.putExtras(c);
-            startActivity(intent);
+            if (d.equals("")){
+                Toast.makeText(MainActivity.this, "Veuillez renseigner la distance", Toast.LENGTH_SHORT).show();}
+            else {
+                String category = categorie.getText().toString();
+                Intent intent = new Intent(MainActivity.this, Main2Activity.class);
+                Bundle b = new Bundle();
+                Bundle c = new Bundle();
+                c.putString(EXTRA_MESS, category);
+                b.putString(EXTRA_MESSAGE, d);
+                intent.putExtras(b);
+                intent.putExtras(c);
+                startActivity(intent);
+            }
         }
-
     };
 
     private TextWatcher textWatcher = new TextWatcher() {
