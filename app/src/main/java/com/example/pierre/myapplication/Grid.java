@@ -3,7 +3,6 @@ import java.util.List;
 import java.util.ArrayList;
 
 
-
 public class Grid {
     public List<Box> boxes;
     public Grid() {
@@ -27,13 +26,14 @@ public class Grid {
                 boxes.add(new Box(left,right,upleft,upright));
             }
         }
-
     }
+
     public void addRestaurant(Restaurant resto) {
         if (resto.latitude!=null) {
             this.boxes.get((int) ((90+Math.floor(resto.latitude))*360 + 180 + Math.floor(resto.longitude))).liste.add(resto);
         }
     }
+
     public ArrayList<Restaurant> listof(Client client,double distance) {
         ArrayList<Restaurant> result=new ArrayList<Restaurant>();
         List<Restaurant> relevant1=this.boxes.get((int) ((90+Math.floor(client.latitude))*360 + 180 + Math.floor(client.longitude))).liste;
@@ -64,6 +64,5 @@ public class Grid {
             }
         }
         return result;
-
     }
 }

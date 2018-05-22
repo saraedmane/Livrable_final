@@ -1,34 +1,21 @@
 package com.example.pierre.myapplication;
-import android.support.v4.app.SupportActivity.ExtraData.*;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import org.codehaus.jackson.JsonParseException;
-import org.codehaus.jackson.map.JsonMappingException;
-import java.io.File;
-import java.io.IOException;
+
 import java.util.ArrayList;
 
-
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
+    //la classe responsable du contenu du RecyclerView et des vues qui l’affichent
     private ArrayList<Pair<String, String>> restos = new ArrayList<>();
     private int d = 0;
 
-
     public MyAdapter(int d) {
-        this.d = d;
-
-    }
+        this.d = d; }
 
     @Override
     public int getItemCount() {
@@ -53,7 +40,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         int i = 0;
         while (i < res.size()) {
             Restaurant r = res.get(i);
-            Log.i("Mon res: ", r.getName());
             Pair<String, String> cRes = Pair.create(r.getName(),"STARS: "+r.getStars() + "/5" + System.getProperty("line.separator")+ "ADDRESS: "+r.getAddress()+System.getProperty("line.separator")+"KEYWORDS: "+ r.category(r.categories)+System.getProperty("line.separator")+"OPENING HOURS: "+System.getProperty("line.separator")+r.hoursDisplay(r.hours));
             this.restos.add(cRes);
             i++;
@@ -81,7 +67,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 }
             });
         }
-
 
 
         public void display(Pair<String, String> pair) {

@@ -10,13 +10,10 @@ import java.util.ArrayList;
 
 public class Main2Activity extends AppCompatActivity {
     public static Client user= new Client(33.472831, -112.066411);
-
     private Grid earth = new Grid();
-
     private int d = 0;
 
-
-        @Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main2);
@@ -39,9 +36,7 @@ public class Main2Activity extends AppCompatActivity {
                 rv.setAdapter(myAdapter);
             }
         }
-
-
-
+    //cette methode prend en argument le mot-cle, parcourt le fichier json et rajoute dans le grid les restaurants qui correspondent
     public void lecture(String keyword) {
         Database data = new Database();
         ArrayList<Restaurant> services = null;
@@ -64,7 +59,7 @@ public class Main2Activity extends AppCompatActivity {
             i++;
         }
     }
-
+    //cette methode rend la partie du code relative aux mots cles insensible à la casse
     public static ArrayList<String> Lowercase(ArrayList<String> categories) {
         ArrayList<String> newcat=new ArrayList<String>();
         for (String key: categories) {

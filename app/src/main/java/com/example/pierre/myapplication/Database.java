@@ -1,23 +1,11 @@
 package com.example.pierre.myapplication;
-import android.content.Context;
-import android.content.res.AssetManager;
-import android.util.Log;
-
-import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.DeserializationConfig;
-import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
-
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.channels.AsynchronousFileChannel;
-import java.util.List;
-import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Database {
     Database data;
@@ -34,15 +22,16 @@ public class Database {
         ArrayList<Restaurant> restaurants=new ArrayList<Restaurant>();
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure( DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-
+        //on utilise configure pour que le parser ne prenne pas en compte les attributs qui ne sont pas listes dans les attributs de la classe Restaurant
         while (input.hasNextLine()) {
             //lecture ligne à ligne du fichier
             String jsonInString1 = input.nextLine();
+            //a chaque iteration on met la ligne qui correspond a un objet json dans un string
            Restaurant resto=mapper.readValue(jsonInString1, Restaurant.class);
+           //on transforme l objet json en un objet java
             restaurants.add(resto);
+            //on ajoute le nouveau restaurant dans la liste
         }
         return restaurants;
-
     }
-
 }

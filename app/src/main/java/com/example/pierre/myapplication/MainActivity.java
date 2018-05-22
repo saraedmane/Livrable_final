@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         categorie.addTextChangedListener(textWatcher);
     }
 
+    //cette methode determine quoi faire en cas de clic
     private OnClickListener envoyerListener = new OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, Main2Activity.class);
                 Bundle b = new Bundle();
                 Bundle c = new Bundle();
+                //les bundle contiennent le message qu il faut transmettre a la deuxieme activite
                 c.putString(EXTRA_MESS, category);
                 b.putString(EXTRA_MESSAGE, d);
                 intent.putExtras(b);
@@ -52,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    //cette methode est appelee quand le texte est change
     private TextWatcher textWatcher = new TextWatcher() {
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
