@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:textColor="#23b165"
+        android:textColor="#e42a24"
         android:layout_marginBottom="15dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         tools:text="Personnage" ></TextView>

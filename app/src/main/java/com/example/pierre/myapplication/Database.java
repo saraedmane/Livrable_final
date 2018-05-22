@@ -39,10 +39,8 @@ public class Database {
             //lecture ligne à ligne du fichier
             String jsonInString1 = input.nextLine();
            Restaurant resto=mapper.readValue(jsonInString1, Restaurant.class);
-            Log.i("Resto:", "mon resto est "+resto.getName());
             restaurants.add(resto);
         }
-        //Log.i("Conclusion", "Taille: "+restaurants.size());
         return restaurants;
 
     }

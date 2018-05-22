@@ -1,39 +1,21 @@
 package com.example.pierre.myapplication;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
-import org.codehaus.jackson.annotate.JsonProperty;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Restaurant {
-    @JsonProperty
+    public String distance;
     String business_id;
-    @JsonProperty
     public String name;
-    @JsonProperty
-    String neighborhood;
-    @JsonProperty
     String address;
-    @JsonProperty
-    String city;
-    @JsonProperty
-    String state;
-    @JsonProperty
-    String postal_code;
-    @JsonProperty
     public Double latitude;
-    @JsonProperty
     public Double longitude;
-    @JsonProperty
-    String stars;
-    @JsonProperty
+    Double stars;
+    public ArrayList<String> categories;
     Double review_count;
-    @JsonProperty
     Boolean is_open;
-    @JsonIgnore
-    String note;
-    @JsonIgnore
-    public Specialite specialite;
-    @JsonProperty
-    public String[] categories;
+    double note;
+    public HashMap<String,String> hours;
 
     public Restaurant(){}
 
@@ -41,9 +23,18 @@ public class Restaurant {
         this.latitude=latitude;
         this.longitude=longitude;
     }
+    public HashMap<String,String> getHours() {
+        return hours;
+    }
+    public void setHours(HashMap<String,String> hours) {
+        this.hours=hours;
+    }
+    public String getDistance() {
+        return distance;
+    }
 
     public String toString() {
-        return "Name:"+" "+name+" / "+"Address:"+" "+address+" / "+"Stars:"+" "+stars+" / "+"Category:"+category(categories);
+        return "Name:"+" "+name+" / "+"Address:"+" "+address+" / Distance: "+distance+ " / "+"Stars:"+" "+stars+" / "+" Category: "+category(categories)+System.lineSeparator()+"Hours: "+hoursDisplay(hours);
     }
 
     public String getBusiness_id() {
@@ -54,28 +45,17 @@ public class Restaurant {
         return name;
     }
 
-    public String getNeighborhood() {
-        return neighborhood;
-    }
 
     public String getAddress() {
         return address;
     }
-    public Specialite getSpecialite() {
-        return specialite;
+    public ArrayList<String> getCategories() {
+        return categories;
     }
 
-    public String getCity() {
-        return city;
-    }
 
-    public String getState() {
-        return state;
-    }
 
-    public String getPostal_code() {
-        return postal_code;
-    }
+
 
     public Double getLatitude() {
         return latitude;
@@ -85,7 +65,7 @@ public class Restaurant {
         return longitude;
     }
 
-    public String getStars() {
+    public Double getStars() {
         return stars;
     }
 
@@ -97,7 +77,7 @@ public class Restaurant {
         return is_open;
     }
 
-    public String getNote() {
+    public double getNote() {
         return note;
     }
 
@@ -109,24 +89,8 @@ public class Restaurant {
         this.name = name;
     }
 
-    public void setNeighborhood(String neighborhood) {
-        this.neighborhood = neighborhood;
-    }
-
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public void setPostal_code(String postal_code) {
-        this.postal_code = postal_code;
     }
 
     public void setLatitude(Double latitude) {
@@ -138,7 +102,7 @@ public class Restaurant {
     }
 
     public void setStars(Double stars) {
-        this.stars = String.valueOf(stars);
+        this.stars = stars;
     }
 
     public void setReview_count(Double review_count) {
@@ -150,18 +114,26 @@ public class Restaurant {
     }
 
     public void setNote(double note) {
-        this.note = String.valueOf(note);
+        this.note = note;
     }
-
-    public String[] getCategories() {
-        return categories;
-    }
-
-    public String category(String[] liste) {
-        String a = "restaurant";
-        for (String word:liste){
+    public String category(ArrayList<String> categories2) {
+        String a="";
+        for (String word: categories2) {
             a+=word+", ";
         }
         return a;
     }
+    public String hoursDisplay(HashMap<String,String> hours) {
+        String a="";
+        if (hours.isEmpty())
+            return "No schedules available";
+        for (String key: hours.keySet()) {
+            a+=key+":"+hours.get(key)+System.getProperty("line.separator");
+        }
+        return a;
+
+    }
+
+
+
 }

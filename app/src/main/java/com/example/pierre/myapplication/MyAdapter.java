@@ -21,9 +21,9 @@ import java.util.Iterator;
 import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
-    private ArrayList<Pair<String, String>> restos = new ArrayList<>();//Arrays.asList(Pair.create("Subwayddddddddd","10"),Pair.create("Mcdo","8"));
-
+    private ArrayList<Pair<String, String>> restos = new ArrayList<>();
     private int d = 0;
+
 
     public MyAdapter(int d) {
         this.d = d;
@@ -50,15 +50,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     public void setRestos(ArrayList<Restaurant> res) {
 
-        Log.i("Ajout des restaurants", "Taille: "+res.size());
-
-        //this.restos = Arrays.asList(cRes);
-
         int i = 0;
         while (i < res.size()) {
             Restaurant r = res.get(i);
             Log.i("Mon res: ", r.getName());
-            Pair<String, String> cRes = Pair.create(r.getName(),r.getStars() + "/5" + System.getProperty("line.separator")+ r.getAddress());
+            Pair<String, String> cRes = Pair.create(r.getName(),"STARS: "+r.getStars() + "/5" + System.getProperty("line.separator")+ "ADDRESS: "+r.getAddress()+System.getProperty("line.separator")+"KEYWORDS: "+ r.category(r.categories)+System.getProperty("line.separator")+"OPENING HOURS: "+System.getProperty("line.separator")+r.hoursDisplay(r.hours));
             this.restos.add(cRes);
             i++;
         }
@@ -66,18 +62,27 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-
         private final TextView name;
         private final TextView description;
-
         private Pair<String, String> currentPair;
 
         public MyViewHolder(final View itemView) {
             super(itemView);
-            name = (TextView) itemView.findViewById(R.id.name);
-            description = (TextView) itemView.findViewById(R.id.description);
+            name = ((TextView) itemView.findViewById(R.id.name));
+            description = ((TextView) itemView.findViewById(R.id.description));
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    new AlertDialog.Builder(itemView.getContext(),R.style.AlertDialogCustom)
+                            .setTitle(currentPair.first)
+                            .setMessage(currentPair.second)
+                            .show();
+                }
+            });
         }
+
+
 
         public void display(Pair<String, String> pair) {
             currentPair = pair;

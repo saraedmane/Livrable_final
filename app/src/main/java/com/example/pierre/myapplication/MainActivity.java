@@ -1,30 +1,25 @@
 package com.example.pierre.myapplication;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnKeyListener;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
-import android.content.Intent;
 
 
 public class MainActivity extends AppCompatActivity {
     public final static String EXTRA_MESSAGE = "distance";
     public final static String EXTRA_MESS = "category";
+
     EditText distance = null;
     EditText categorie = null;
     Button envoyer = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             String d = distance.getText().toString();
             if (d.equals("")){
-                Toast.makeText(MainActivity.this, "Veuillez renseigner la distance", Toast.LENGTH_SHORT).show();}
+                Toast.makeText(MainActivity.this, "Please enter a distance", Toast.LENGTH_SHORT).show();}
             else {
                 String category = categorie.getText().toString();
                 Intent intent = new Intent(MainActivity.this, Main2Activity.class);
